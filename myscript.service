@@ -1,0 +1,12 @@
+[Unit]
+Description=My Python Script Service
+After=network.target
+
+[Service]
+User=root
+ExecStart=/root/serv/start.sh
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
