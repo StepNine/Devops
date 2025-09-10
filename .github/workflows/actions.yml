@@ -13,7 +13,7 @@ jobs:
 
         
       - name: gogogo
-        run: docker build -t ghcr.io/StepNine/Devops/myapp:latest .
+        run: docker build -t ghcr.io/stepnine/devops/myapp:latest .
       - name: final
-        run: docker push -t ghcr.io/StepNine/Devops/myapp:latest .
+        run: docker push -t ghcr.io/stepNine/devops/myapp:latest .
         
