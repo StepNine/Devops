@@ -10,7 +10,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4 
-      - uses: docker/login-action@v2
+
         
       - name: gogogo
         run: docker build -t ghcr.io/StepNine/Devops/myapp:latest 
