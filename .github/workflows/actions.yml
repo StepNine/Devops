@@ -23,5 +23,5 @@ jobs:
         run: docker build -t ghcr.io/stepnine/devops/myapp:latest .
 
       - name: Push Docker image
-        run: docker push ghcr.io/stepnine/sevops/myapp:latest
+        run: docker push ghcr.io/stepnine/devops/myapp:latest
         
