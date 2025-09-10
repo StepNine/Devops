@@ -1,0 +1,14 @@
+name: CI Pipeline # Имя вашего пайплайна
+
+on:
+  push: # Это активирует триггер на любой push в репозиторий
+    branches: [ main ] # Опционально: срабатывает только при push в ветку main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4 # Скачивает код
+      - name: Run a one-line script
+        run: echo Hello, world!
