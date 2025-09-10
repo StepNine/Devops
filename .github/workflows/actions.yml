@@ -1,14 +1,25 @@
-name: CI Pipeline # Имя вашего пайплайна
+name: CI Pipeline 
 
 on:
-  push: # Это активирует триггер на любой push в репозиторий
-    branches: [ main ] # Опционально: срабатывает только при push в ветку main
+  push: 
+    branches: [ main ] 
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4 # Скачивает код
+      - uses: actions/checkout@v4 
+      - uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+        
       - name: Run a one-line script
         run: echo Hello, world!
+      - name: gogogo
+        run: docker build -t ghcr.io/StepNine/Devops/myapp:latest 
+      - name: final
+        run: docker push -t ghcr.io/StepNine/Devops/myapp:latest
+        
