@@ -20,8 +20,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/stepnine/devops/myapp:latest .
+        run: docker build -t ghcr.io/stepnine/myapp:latest .
 
       - name: Push Docker image
-        run: docker push ghcr.io/stepnine/devops/myapp:latest
+        run: docker push ghcr.io/stepnine/myapp:latest
         
