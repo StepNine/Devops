@@ -2,7 +2,7 @@ name: Build & Run (self-hosted)
 
 on:
   workflow_run:
-    workflows: ["actions"]
+    workflows: [Build and Push Docker image]
     types:
       - completed
 
