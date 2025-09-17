@@ -8,8 +8,7 @@ on:
 
 jobs:
   deploy:
-    runs-on:
-      labels: runner
+    runs-on: [runner]
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
 
