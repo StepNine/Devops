@@ -18,16 +18,14 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-        
-      - name: Set image version
-        run: |
-          IMAGE=ghcr.io/stepnine/devops
-          VERSION=sha-${GITHUB_SHA::7}
-          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
-          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+
+      - name: Set image tag
+        id: vars
+        run: echo "IMAGE_TAG=sha-${GITHUB_SHA::7}" >> $GITHUB_ENV
 
       - name: Build Docker image
-        run: docker build -t $IMAGE:$VERSION .
+        run: docker build -t ghcr.io/stepnine/devops:${IMAGE_TAG} .
 
       - name: Push Docker image
-        run: docker push $IMAGE:$VERSION
+        run: docker push ghcr.io/stepnine/devops:${IMAGE_TAG}
