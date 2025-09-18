@@ -1,4 +1,5 @@
 name: Build and Push Docker image
+
 on:
   push:
     branches: [ "main" ]
@@ -17,9 +18,19 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Set image version
+        id: vars
+        run: |
+          IMAGE=ghcr.io/stepnine/devops
+          VERSION=sha-${GITHUB_SHA::7}
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "IMAGE=$IMAGE" >> $GITHUB_OUTPUT
+          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Build Docker image
-        run: docker build -t ghcr.io/stepnine/devops:latest .
+        run: docker build -t $IMAGE:$VERSION .
 
       - name: Push Docker image
-        run: docker push ghcr.io/stepnine/devops:latest
+        run: docker push $IMAGE:$VERSION
