@@ -20,14 +20,11 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
         
       - name: Set image version
-        id: vars
         run: |
           IMAGE=ghcr.io/stepnine/devops
           VERSION=sha-${GITHUB_SHA::7}
           echo "IMAGE=$IMAGE" >> $GITHUB_ENV
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "IMAGE=$IMAGE" >> $GITHUB_OUTPUT
-          echo "VERSION=$VERSION" >> $GITHUB_OUTPUT
 
       - name: Build Docker image
         run: docker build -t $IMAGE:$VERSION .

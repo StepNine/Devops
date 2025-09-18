@@ -22,11 +22,19 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Pull Docker image
+      - name: Prepare IMAGE and VERSION
+        id: prep
         run: |
           IMAGE=ghcr.io/stepnine/devops
-          VERSION=sha-${{ github.event.workflow_run.head_sha::7 }}
-          docker pull $IMAGE:$VERSION    
+          HEAD_SHA= ${{ github.event.workflow_run.head_sha }}
+          SHORT_SHA="${HEAD_SHA::7}"
+          VERSION="sha-${SHORT_SHA}"
+          echo "IMAGE=$IMAGE" >> $GITHUB_ENV
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "Using $IMAGE:$VERSION"
+
+      - name: Pull image
+        run: docker pull "$IMAGE:$VERSION"
 
       - name: Restart container
         shell: bash
