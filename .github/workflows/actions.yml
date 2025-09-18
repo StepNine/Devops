@@ -18,7 +18,6 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-
       - name: Build Docker image
         run: docker build -t ghcr.io/stepnine/devops:latest .
 
