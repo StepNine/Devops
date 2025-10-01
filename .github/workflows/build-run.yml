@@ -26,10 +26,10 @@ jobs:
         id: vars
         run: echo "IMAGE_TAG=sha-${GITHUB_SHA::7}" >> $GITHUB_ENV
 
-      - name: Build & push (arm64)
+      - name: Build & push (amd64)
         run: |
           docker buildx build \
-            --platform linux/arm64 \
+            --platform linux/amd64 \
             -t ghcr.io/stepnine/devops:${IMAGE_TAG} \
             -t ghcr.io/stepnine/devops:latest \
             --push .
