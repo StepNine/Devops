@@ -36,4 +36,4 @@ jobs:
           platforms: linux/amd64,linux/arm64
           tags: |
             ghcr.io/stepnine/devops:latest
-            ghcr.io/stepnine/devops:sha-${{ github.sha.substr(0,7) }}
+      
