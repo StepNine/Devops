@@ -30,6 +30,6 @@ jobs:
         run: |
           docker buildx build \
             --platform linux/amd64 \
-            -t ghcr.io/stepnine/devops:${IMAGE_TAG} \
-            -t ghcr.io/stepnine/devops:latest \
+            -t ghcr.io/stepnine/devops/my_website:${IMAGE_TAG} \
+            -t ghcr.io/stepnine/devops/my_website:latest \
             --push .
