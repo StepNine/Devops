@@ -1,7 +1,7 @@
 replicaCount: 1
 
 image:
-  repository: ghcr.io/stepnine/devops
+  repository: ghcr.io/stepnine/devops/my_website
   pullPolicy: IfNotPresent
   tag: "latest"
 
