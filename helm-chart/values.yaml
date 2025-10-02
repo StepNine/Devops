@@ -1,0 +1,21 @@
+replicaCount: 1
+
+image:
+  repository: ghcr.io/stepnine/devops
+  pullPolicy: IfNotPresent
+  tag: "latest"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 5001
+  name: http
+
+ingress:
+  enabled: true
+  hosts:
+    - host: bogomolove.nginx.int.msk.drunkbatya.com
+      paths:
+        - path: /
+          pathType: Prefix
+  tls: []  
